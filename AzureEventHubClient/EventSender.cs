@@ -39,11 +39,11 @@ namespace AzureEventHubClient
         {
             try
             {
-                string eventJsonContent = File.ReadAllText("SampleData.json");
+                string eventJsonContent = File.ReadAllText("Data\\Event.json");
                 List<Event> events = JsonConvert.DeserializeObject<List<Event>>(eventJsonContent);
                 if (events == null || events.Count == 0)
                 {
-                    throw new Exception("No event read from SampleData.json");
+                    throw new Exception("No event read from Data\\Event.json");
                 }
 
                 EventData data;
