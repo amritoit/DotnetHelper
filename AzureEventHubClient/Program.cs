@@ -27,26 +27,23 @@ namespace AzureEventHubClient
             //Read Event Hub Config file
             AppConfig appConfig = PopulateAppConfig();
 
-           //Send Events
-           EventSender eventSender = new EventSender(
-               appConfig.EventHubConfig.EventHubNameSpace,
-               appConfig.EventHubConfig.EventHubName,
-               appConfig.EventHubConfig.EventHubConnectionString);
-            
-           eventSender.SendEvents().Wait();
-            
-            
-            
-            //Process Events
+            //Send Events
+            EventSender eventSender = new EventSender(
+                appConfig.EventHubConfig.EventHubNameSpace,
+                appConfig.EventHubConfig.EventHubName,
+                appConfig.EventHubConfig.EventHubConnectionString);
 
+            eventSender.SendEvents().Wait();
+
+            //Process Events
             EventReceiver eventReceiver = new EventReceiver(
-                appConfig.EventHubConfig.EventHubNameSpace, 
+                appConfig.EventHubConfig.EventHubNameSpace,
                 appConfig.EventHubConfig.EventHubName,
                 appConfig.EventHubConfig.EventHubConnectionString,
-                appConfig.EventHubConfig.StorageConnectionString, 
+                appConfig.EventHubConfig.StorageConnectionString,
                 appConfig.EventHubConfig.BlobContainerName);
 
-            eventReceiver.ProcessEvents().Wait();            
+            eventReceiver.ProcessEvents().Wait();
         }
 
         private static AppConfig PopulateAppConfig()
@@ -57,7 +54,7 @@ namespace AzureEventHubClient
             string configContent = File.ReadAllText(configFile);
 
             // Create a deserializer with camel case naming convention
-            var deserializer = new DeserializerBuilder()               
+            var deserializer = new DeserializerBuilder()
                 .Build();
 
             // Deserialize the YAML content into the Config object

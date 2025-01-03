@@ -68,7 +68,7 @@ namespace AzureEventHubClient
                     await Task.Delay(Timeout.Infinite, cancellationSource.Token);
                 }
                 catch (TaskCanceledException)
-                {                   
+                {
                     Console.WriteLine($"Task is cancelled by caller.");
                 }
                 finally
@@ -76,7 +76,7 @@ namespace AzureEventHubClient
                     await processor.StopProcessingAsync();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine($"Temporary exception in Event processor.-{ex}");
             }
@@ -122,7 +122,7 @@ namespace AzureEventHubClient
                     partitionEventCount[partition] = 0;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine($"Exception in event process handler-{ex}.");
             }
@@ -138,7 +138,7 @@ namespace AzureEventHubClient
                 Debug.WriteLine($"\tException: {args.Exception}");
                 Debug.WriteLine("");
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine($"Exception in event process error handler-{ex}.");
             }
