@@ -1,0 +1,6 @@
+EventHubConfig:
+  EventHubName: "dh-test"
+  EventHubNameSpace: "dh-test-ns"
+  EventHubConnectionString: ""
+  StorageConnectionString: ""
+  BlobContainerName: "eh-test-checkpoint"
